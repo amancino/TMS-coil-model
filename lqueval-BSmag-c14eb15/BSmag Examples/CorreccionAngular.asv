@@ -1,0 +1,20 @@
+
+
+% alfaij = desvío en la direcion del campo j del angulo del sensor i 
+alfaxy = deg2rad(0.23 + e3);
+alfaxz = deg2rad(0 + e2);
+alfayx = deg2rad(0.5 - e3);
+alfayz = deg2rad(4);
+alfazx = deg2rad(-2);
+alfazy = deg2rad(9);
+
+bx = Bx*cos(alfaxy)*cos(alfaxz) + By*sin(alfaxy) + Bz*sin(alfaxz);
+by = By*cos(alfayx)*cos(alfayz) + Bx*sin(alfayx) + Bz*sin(alfayz);
+bz = Bz*cos(alfazx)*cos(alfazy) + Bx*sin(alfaxz) + By*sin(alfazy);
+
+Bx_aprox = (bx - bz*sin(alfaxz) -by*sin(alfaxy))/(cos(alfaxy)*cos(alfaxz));
+By_aprox = (by - bz*sin(alfayz) -bx*sin(alfayx))/(cos(alfayx)*cos(alfayz));
+Bz_aprox = (bz - by*sin(alfazy) -bx*sin(alfaxz))/(cos(alfazx)*cos(alfazy));
+
+std2(Bx-bx)
+std2(Bx-Bx_aprox)

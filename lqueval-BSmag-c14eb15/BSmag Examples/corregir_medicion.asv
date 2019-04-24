@@ -1,0 +1,17 @@
+function [ud] = corregir_medicion(ud)
+    ind = find(ud.stdX > std2(ud.stdX));
+    
+    if isempty(ind)
+        return;
+    end
+    
+    c = ceil(ind/size(ud.stdX,1));
+    f = 1+mod(ind-1,size(ud.stdX,1));
+    
+    for k=1:length(c)
+        med(1:20) = ud.BxAcum(f(k),c(k),:);
+        std(med);
+        dif = 
+    end
+    
+end
